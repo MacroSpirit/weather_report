@@ -5,10 +5,10 @@ from datetime import datetime
 
 
 engine = create_engine(
-    'postgresql+psycopg2:///weather_report.db'
+    'sqlite:///weather_report.db'
 )
 
-Model.metadata.create_all(engine)
+
 Session = sessionmaker(engine)
 
 class Model(DeclarativeBase):
@@ -17,6 +17,8 @@ class Model(DeclarativeBase):
 class WeatherDataTable(Model):
     __tablename__ = 'weather_report'
     id = Column(Integer, primary_key=True)
-    data = Column(JSON)
+    data = Column(Integer)
     timestamp = Column(DateTime, default=datetime.utcnow)
 
+def create_table():
+    Model.metadata.create_all(engine)

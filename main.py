@@ -1,8 +1,9 @@
 import requests
 import json
 from data_analysis import weather_data_analysis
-from database import Session, WeatherDataTable, create_tables
+from database import Session, WeatherDataTable, create_table
 from info import API_KEY, BULK_FILE_NAME
+from datetime import time
 
 #получение данных о погоде
 def get_weather_data():
@@ -13,6 +14,7 @@ def get_weather_data():
 
 def add_data():
     session = Session()
+    create_table()
     while True:
         weather_data = get_weather_data()
         if weather_data:
@@ -24,5 +26,4 @@ def add_data():
         time.sleep(3600)
 
 
-if __name__ == __main__:
-    add_data()
+add_data()

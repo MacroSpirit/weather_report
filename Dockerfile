@@ -1,4 +1,7 @@
-FROM ubuntu:latest
-LABEL authors="Клим"
+FROM python:3.12
 
-ENTRYPOINT ["top", "-b"]
+COPY ..
+
+RUN pip install -r requirements.txt
+
+CMD ['.main']
