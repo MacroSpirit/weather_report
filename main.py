@@ -3,7 +3,7 @@ import json
 from data_analysis import weather_data_analysis
 from database import Session, WeatherDataTable, create_table
 from info import API_KEY, BULK_FILE_NAME
-from datetime import time
+import time
 
 #получение данных о погоде
 def get_weather_data():
